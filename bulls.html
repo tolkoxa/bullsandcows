@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //игрок пытается отгадать число, загаданное компьютером
+        // 10 ходов
+        // цифры не могут повторяться (1234 + ///// 1122 -)
+
+        // 1234 было загадано, то
+        // 0123 - 3 коровы
+        // 1789 - 1 бык
+        // 1458 - 1 бык 1 корова
+
+        function game() {
+            let goal = getNumber();
+            let rounds = 10;
+            let playing = true;
+
+            while (playing) {
+                if (rounds >= 1) {
+                    playing = findOut(goal);
+                    playing ? console.log(`Осталось ${--rounds}`) : console.log(`You win: ` + goal);
+                } else {
+                    playing = false;
+                    console.log(`You loose: ` + goal);
+                    return false;
+                }
+            }
+        }
+
+        function findOut(g) {
+            let bulls = 0;
+            let cows = 0;
+            let user = [...prompt('Введите число')];
+
+            user.forEach(function(num, index) {
+                if (+num === g[index]) {
+                    bulls++
+                } else if (g.indexOf(+num) >= 0) {
+                    cows++
+                }
+            })
+
+            console.log(`Ваш вариант ${user}`)
+            console.log(`Cows: ${cows}; Bulls: ${bulls}`)
+
+            return bulls < 4 ? true : false
+        }
+
+        function getNumber() {
+            let arr = []
+            while (arr.length < 4) {
+                let num = randomize()
+                if (arr.indexOf(num) === -1) {
+                    arr.push(num)
+                }
+            }
+            return arr
+        }
+
+        function randomize() {
+            return Math.floor(Math.random() * 10)
+        }
+    </script>
+</body>
+
+</html>

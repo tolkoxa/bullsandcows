@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+    <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js" defer></script>
+    <script src="https://yastatic.net/share2/share.js" defer></script>
+    <title>&laquo;БЫКИ И КОРОВЫ&raquo;</title>
+</head>
+<!-- 
+    !defd
+    todo  sfdd fdfdfd 
+    ? fdd dgdgfgdfgd lelkn 
+-->
+
+<body>
+    <div class="overlay invisible__block" id="overlay"></div>
+    <div class="modal-window-text invisible__block" id="modal-window"></div>
+    <div class="container">
+
+        <header class="header-style">
+            <div class="cow-left"></div>
+            <div class="between-top">&nbsp;</div>
+            <div class="game-name">
+                <p class="game-name__text_small">Игра</p>
+                <p class="game-name__text_black name__text-laquo">&laquo;Быки
+                    <span class="game-name__text_white">и</span>
+                </p>
+                <p class="game-name__text_black">Коровы&raquo;</p>
+            </div>
+            <div class="between-top">Развивает<br>логичность мышления,<br>счёт и память.</div>
+            <div class="cow-right"></div>
+        </header>
+        <main class="main-style">
+            <section class="text-block">
+                <div class="rules-text">
+                    <p class="text__title text__title_indents">Правила игры</p>
+                    <p class="text__desc">
+                        Компьютер загадывает 4–х значное число от 1023 до 9876.<br>Твоя задача отгадать это число за 10 ходов.</p>
+                    <p class="text__desc">
+                        Если ты угадываешь просто цифру, то это &laquo;Корова&raquo;,<br>если цифру и её место &#151; &laquo;Бык&raquo;.
+                    </p>
+                    <p class="text__desc">
+                        <strong>Пример:</strong><br>Загадано тайное число 2864.<br>Попытка: &laquo;1234&raquo;.<br> Результат: 1 Бык (цифра 4 &#151; совпало место) и 1 Корова (цифра 2, место не совпало).
+                    </p>
+                    <p class="text__desc">
+                        <strong>Важные условия:</strong> цифры не могут повторяться.<br>Т.е. можно загадать &laquo;1234&raquo;, но нельзя &laquo;1223&raquo;.<br> Загаданное число не меняется весь раунд.
+                    </p>
+                </div>
+                <div class="action">
+                    <p class="text__title text__title_indents">
+                        Угадай все цифры на 3–м ходу <br>и получи 2&nbsp;000&nbsp;рублей в подарок.
+                    </p>
+                    <p class="text__title text__title_indents">
+                        А если угадаешь все цифры на 4–м ходу, <br>то получишь 1&nbsp;000&nbsp;рублей в подарок.
+                    </p>
+                    <p class="text__title text__title_indents">
+                        Те, кто угадают все цифры на 10–м ходу <br>получат радость и самоуважение.
+                    </p>
+                </div>
+            </section>
+            <section class="inputs">
+                <div class="your-choice">
+                    <div class="border-words">
+                        <div class="dynamic-text">
+                            <div id="instruction">
+                                <p class="instruction">Компьютер уже загадал число.</p>
+                                <p class="instruction">Введи свой вариант в эти поля.</p>
+                                <p class="instruction">После этого нажимай кнопку &laquo;Проверить&raquo;.</p>
+                                <p class="instruction">Удачи.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inputs-main">
+                    <div class="inputs-all">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input1">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input2">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input3">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input4">
+                    </div>
+                    <div class="button-play">
+                        <div class="wrapper">
+                            <button class="button-check">Проверить</button>
+                        </div>
+                        <div class="start-new-game__link invisible__block">Начать с начала></div>
+                    </div>
+                </div>
+            </section>
+            <section class="facts">
+                <div class="facts-text">
+                    <p class="text__title text__title_indents">Интересные факты</p>
+                    <p class="text__desc">
+                        ФАКТ № 27.<br> Коровы вредят экологии больше, чем автомобили.<br>Их навоз и просто кишечные газы вносят около 18% вклада в парниковый эффект нашей планеты.</p>
+                    <p class="text__desc">
+                        <a href="#" id="next-fact">Следующий факт</a>
+                    </p>
+                </div>
+                <div class="social-links">
+                    <p class="text__title text__title_indents">
+                        Поделись этой игрой
+                    </p>
+                    <div class="ya-share2 text__title_indents" data-services="vkontakte,facebook,twitter,odnoklassniki,telegram,whatsapp,linkedin,moimir,evernote,lj,pocket,viber"></div>
+                </div>
+                <div>
+                    <iframe src="https://money.yandex.ru/quickpay/shop-widget?writer=seller&targets=Поблагодарить разработчика и пополнить призовой фонд игры&targets-hint=&default-sum=50&button-text=11&payment-type-choice=on&mobile-payment-type-choice=on&hint=&successURL=http%3A%2F%2Fbullsandcows.plan-b.studio%2Fthankyou&quickpay=shop&account=4100179784556"
+                        width="400" height="250" frameborder="0" allowtransparency="true" scrolling="no" allowTransparency="yes" class="text__title_indents iframe-style"></iframe>
+                </div>
+            </section>
+        </main>
+        <footer class="footer-style">
+            <div class="footer-grid">
+                <div class="game-name">
+                    <p class="game-name__text_black game-name__footer">Быки
+                        <span class="game-name__text_white">и</span>
+                    </p>
+                    <p class="game-name__text_black game-name__footer">Коровы</p>
+                </div>
+                <div class="copyright">&copy; 2020</div>
+            </div>
+            <div class="footer-grid">
+                <p class="text__footer">Игра &laquo;Быки и коровы&raquo; разработана в <a href="http://plan-b.studio" class="text__link">plan b studio</a>.<br> Кроме браузерных игр мы разрабатываем приложения и сайты, самостоятельно или на конструкторах: <a href="http://bazium.com"
+                        class="text__link">Базиум</a>,
+                    <a href="http://tilda.cc" class="text__link">Тильда</a>,
+                    <a href="https://www.bitrix24.ru/" class="text__link">Битрикс 24</a>.</p>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-main-blocks">
+                    <p class="text__footer">Пожелания/предложения</p>
+                    <form action="#" method="post">
+                        <textarea class="textarea" placeholder="Сообщение"></textarea>
+                        <button class="button-send-2">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </footer>
+        <section class="plan-b-style">
+            <div class="dev-planb">Разработано в&nbsp;
+                <a href="http://plan-b.studio" style="text-decoration: none;">
+                    <div class="plan-b">
+                        <span class="planb_p">p</span><span class="planb_l">l</span><span class="planb_a">a</span><span class="planb_n">n</span>&nbsp;<span class="planb_b">b</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
