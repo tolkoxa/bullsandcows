@@ -20,26 +20,325 @@ body {
 
 .modal-window-win {
     position: fixed;
-    top: 200px;
-    left: 500px;
+    top: 150px;
+    left: 400px;
     width: 800px;
     height: 500px;
     background-color: $bgcolor-top;
     z-index: 11;
     border-radius: 30px;
     box-shadow: 0 0 50px 5px rgba(139, 180, 241, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_money {
+        top: 30px;
+        height: 700px;
+    }
+}
+
+.win-modal {
+    margin: 0 0 0 0;
+    padding: 20px;
+    width: 100%;
+    height: 90%;
+    position: relative;
+    z-index: 10;
+}
+
+.close-modal {
+    position: absolute;
+    box-sizing: border-box;
+    background: url('../img/site/close-modal.png') no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 20px;
+    border: 5px solid transparent;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    &_lost {
+        right: 60px;
+    }
+}
+
+.quote {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-end;
+    &-texts {
+        margin: 0 50px 0 0;
+        padding: 20px 30px;
+        width: 400px;
+        background-color: $bgcolor-main;
+        border-radius: 30px;
+        position: relative;
+        &::after {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 100%;
+            top: 60px;
+            border-top: 30px solid transparent;
+            border-left: 110px solid $bgcolor-main;
+            border-bottom: 0px solid transparent;
+        }
+    }
+    &-text {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+        width: 390px;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 27px;
+        line-height: 33px;
+        color: #000000;
+    }
+    &_lost {
+        justify-content: flex-start;
+        margin-left: -20px;
+        align-items: center;
+    }
+}
+
+.quote-texts_lost {
+    margin: 0 0 0 50px;
+    padding: 20px 30px;
+    width: 400px;
+    background-color: $bgcolor-main;
+    border-radius: 30px;
+    position: relative;
+    &::after {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 98%;
+        top: 30px;
+        border-top: 0px solid transparent;
+        border-right: 110px solid $bgcolor-main;
+        border-bottom: 30px solid transparent;
+    }
+}
+
+.quote-texts_money {
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+    &-text {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
+        color: $text-color_main;
+        &_margin {
+            margin: 20px 0 0 0;
+        }
+    }
+    &-number {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 80px;
+        line-height: 53px;
+        text-align: center;
+        color: $text-color_white;
+        text-shadow: 3px 2px 10px rgba(0, 0, 0, 0.2), 4px 2px 5px rgba(255, 255, 255, 1);
+        &_margin {
+            margin: 20px 0 0 0;
+        }
+    }
+}
+
+.modal-footer {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.footer-text {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: $text-color_white;
+    &_margin {
+        margin: 20px 0 0 0;
+    }
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    &__left {
+        width: 300px;
+    }
+}
+
+.footer__text {
+    margin: 0 0 0 0;
+    padding: 5px 0 5px 0;
+    font-family: $font-main;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    color: $text-color_main;
+    &_link {
+        text-decoration-line: underline;
+        &:hover {
+            text-decoration: none;
+            color: $text-color_white;
+            cursor: pointer;
+        }
+    }
+}
+
+.money-text {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    color: $text-color_main;
+    text-align: center;
+}
+
+.money-footer {
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    padding: 0 0 0 0;
+    width: 90%;
+}
+
+.secret-block {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: 300px;
+}
+
+.secret-text {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: $text-color_main;
+}
+
+.secret-code {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: $text-color_white;
+}
+
+.money-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+}
+
+.form-text {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 23px;
+    color: $text-color_white;
+    &_margin {
+        margin: 0 0 4px 0;
+    }
+}
+
+.form-input {
+    padding: 5px 10px;
+    width: 352px;
+    height: 40px;
+    background: $bgcolor-main;
+    border-radius: 10px;
+    border: none;
+    font-family: $font-main;
+    font-size: 18px;
+    font-weight: 400;
+    color: $text-color_main;
+    outline: none;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+    &_maring {
+        margin: 0 0 6px 0;
+    }
+}
+
+.form-btn {
+    width: 180px;
+    height: 50px;
+    background: #f44035;
+    border-radius: 15px;
+    color: $text-color_white;
+    font-size: 20px;
+    font-family: $font-main;
+    font-weight: 400;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(244, 64, 53, 0.6), 1px 1px 5px rgba(255, 255, 255, 1);
+    &_margin {
+        margin: 10px 0 0 0;
+    }
+    &:hover {
+        background: #e04843;
+        outline: none;
+        // color: $text-color_main;
+    }
+    &:active {
+        padding: 0 5px 5px 0;
+        outline: none;
+        box-shadow: -2px -2px 5px rgba(244, 64, 53, 0.6), -1px -1px 5px rgba(255, 255, 255, 1);
+    }
 }
 
 .modal-window-lost {
-    position: absolute;
-    top: 40%;
-    left: 30%;
+    position: fixed;
+    top: 100px;
+    left: 400px;
     width: 800px;
     height: 500px;
     background-color: $bgcolor-second;
     z-index: 11;
     border-radius: 30px;
-    box-shadow: 0 0 50px 5px rgba(139, 180, 241, 0.6);
+    box-shadow: 0 0 50px 5px rgba(177, 177, 177, 0.6);
 }
 
 .container {
@@ -66,7 +365,7 @@ body {
     width: 20%;
     font-size: 20px;
     font-weight: 500;
-    margin: 95px 0 0 50px;
+    margin: 95px 0 0 0;
     text-transform: uppercase;
 }
 
@@ -115,11 +414,6 @@ body {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     box-sizing: border-box;
-    // background-image: url(../img/site/main-bg_forest.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 1000px;
 }
 
 .text-block {
@@ -142,6 +436,16 @@ body {
     color: $text-color_main;
 }
 
+.action-text {
+    margin: 0 0 0 0;
+    padding: 0 0 10px 0;
+    font-family: $font-main;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 30px;
+    color: $text-color_main;
+}
+
 .text__title_indents {
     margin: 15px 0 0 0;
 }
@@ -152,12 +456,14 @@ body {
     font-family: $font-main;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 22px;
-}
-
-.text__desc:last-child {
-    margin: 0 0 50px 0;
+    &:last-child {
+        margin: 0 0 50px 0;
+    }
+    &:first-child {
+        margin: 0 0 0 0;
+    }
 }
 
 .rules-text {
@@ -174,21 +480,20 @@ body {
     height: 490px;
     box-sizing: border-box;
     display: flex;
-    // justify-content: space-evenly;
     justify-content: flex-start;
     align-items: flex-start;
     background-color: $bgcolor-cow-input;
     background-image: url(../img/site/cow-say.png);
     background-position: left bottom;
     background-repeat: no-repeat;
-    background-size: 300px;
+    background-size: 280px;
 }
 
 .your-choice {
     margin: 0 0 0 0;
     padding: 30px 0 0 0;
     box-sizing: border-box;
-    width: 40%;
+    width: 38%;
     display: flex;
     justify-content: flex-end;
     align-self: flex-start;
@@ -200,27 +505,26 @@ body {
     padding: 0 0 0 0;
     background-color: $bgcolor-main;
     border-radius: 20px;
-    width: 50%;
-    height: 380px;
+    width: 41%;
+    height: 410px;
     position: relative;
-}
-
-.border-words:before {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: 300px;
-    width: 0;
-    height: 0;
-    border-bottom: 55px solid $bgcolor-main;
-    border-left: 120px solid transparent;
+    &:before {
+        content: "";
+        position: absolute;
+        right: 100%;
+        top: 325px;
+        width: 0;
+        height: 0;
+        border-bottom: 55px solid $bgcolor-main;
+        border-left: 120px solid transparent;
+    }
 }
 
 .instruction {
     margin: 0 0 0 0;
-    padding: 12px;
+    padding: 15px;
     font-family: $font-main;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: normal;
     line-height: 25px;
 }
@@ -230,10 +534,10 @@ body {
 }
 
 .result-check {
-    margin: 20px 0 0 50px;
+    margin: 20px 0 0 10px;
     padding: 0 0 0 0;
     font-family: $font-main;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 400;
     line-height: 15px;
 }
@@ -258,9 +562,9 @@ body {
 .input-numb {
     margin: 0 0 0 20px;
     padding: 0 0 0 0;
-    width: 235px;
-    height: 90%;
-    font-size: 250px;
+    width: 200px;
+    height: 99%;
+    font-size: 200px;
     font-family: $font-main;
     text-align: center;
     vertical-align: middle;
@@ -268,8 +572,12 @@ body {
     background-color: rgba(255, 255, 255, 1);
     border-radius: 20px;
     color: $text-color_main;
+    outline: none;
     &::placeholder {
         color: rgba(158, 158, 158, 0.35);
+    }
+    &_error {
+        border: 2px solid red;
     }
 }
 
@@ -325,7 +633,34 @@ body {
     height: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+}
+
+.button-play_margin {
+    margin: 0 0 30px 0;
+}
+
+.start-new-game__link {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.start-new-game__text {
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-position: under;
+    text-transform: uppercase;
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+        color: $text-color_grey;
+    }
 }
 
 .cow-say {
@@ -349,16 +684,16 @@ body {
     }
 }
 
-.wrapper {
-    margin: 100px 0 0 0;
-    padding: 0 0 0 0;
-    // display: block;
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    transform: translate(-50%, -50%);
-}
-
+// .wrapper_ {
+//     margin: 0 0 0 0;
+//     padding: 0 0 0 0;
+//     // display: block;
+//     // position: absolute;
+//     // top: 50%;
+//     // left: 50%;
+//     transform: translate(-50%, -50%);
+//     border: 1px solid red;
+// }
 .button-check {
     padding: 0.75em 2em;
     text-align: center;
@@ -372,6 +707,7 @@ body {
     position: relative;
     overflow: hidden;
     background-color: #0c70b3;
+    outline: none;
     // outline: none;
     &:before {
         content: "";
@@ -386,6 +722,7 @@ body {
         transition: none;
     }
     &:hover {
+        outline: none;
         background-color: $color;
         color: #fff;
         border-bottom: 4px solid darken($color, 10%);
@@ -394,6 +731,9 @@ body {
             transform: skewX(-45deg) translateX(13.5em);
             transition: all 0.5s ease-in-out;
         }
+    }
+    &:active {
+        outline: none;
     }
 }
 
@@ -411,8 +751,8 @@ body {
 
 .facts-text {
     width: 35%;
-    margin: 0 10px 0 20px;
-    padding: 0 0 0 0;
+    margin: 0 20px 0 20px;
+    padding: 0 10px 0 0;
 }
 
 .social-links {
@@ -424,7 +764,7 @@ body {
 }
 
 .footer-style {
-    margin: 140px 0 0 0;
+    margin: 0 0 0 0;
     padding: 40px 12px;
     box-sizing: border-box;
     background-color: $bgcolor-footer;
@@ -444,7 +784,7 @@ body {
 }
 
 .game-name__footer {
-    font-size: 60px;
+    font-size: 50px;
     margin: 0 0 -21px 0;
     color: $text-color_grey;
 }
@@ -453,14 +793,14 @@ body {
     margin: 20px 0 0 0;
     padding: 0 0 0 0;
     color: $text-color_grey;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .text__footer {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     font-family: $font-main;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     color: $text-color_grey;
 }
@@ -491,19 +831,19 @@ body {
     font-size: 20px;
 }
 
-:focus::-webkit-input-placeholder {
+ :focus::-webkit-input-placeholder {
     color: transparent;
 }
 
-:focus::-moz-placeholder {
+ :focus::-moz-placeholder {
     color: transparent;
 }
 
-:focus:-moz-placeholder {
+ :focus:-moz-placeholder {
     color: transparent;
 }
 
-:focus:-ms-input-placeholder {
+ :focus:-ms-input-placeholder {
     color: transparent;
 }
 
@@ -619,23 +959,6 @@ body {
     }
 }
 
-.start-new-game__link {
-    margin: 15px 0 0 20px;
-    padding: 0 0 0 0;
-    box-sizing: border-box;
-    font-weight: 500;
-    font-size: 20px;
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-underline-position: under;
-    text-transform: uppercase;
-    &:hover {
-        cursor: pointer;
-        text-decoration: none;
-        color: $text-color_grey;
-    }
-}
-
 .number__0,
 .number__1,
 .number__2,
@@ -647,5 +970,5 @@ body {
 .number__8,
 .number__9 {
     margin: 0 0 0 0;
-    padding: 0 7px;
+    padding: 0 3px;
 }

@@ -13,8 +13,107 @@
 </head>
 
 <body>
-    <div class="overlay invisible__block" id="overlay"></div>
-    <div class="modal-window-text invisible__block" id="modal-window"></div>
+    <div class="modal-window-text modal-window-lost" id="modal-window">
+        <div class="win-modal">
+            <div class="close-modal close-modal_lost"></div>
+            <div class="quote quote_lost">
+                <div class="quote-head">
+                    <img src="img/site/wolf.png" alt="einstein" width="101" height="167">
+                </div>
+                <div class="quote-texts_lost">
+                    <p class="quote-text">Ты, это...</p>
+                    <p class="quote-text">Не растраивайся, если чё</p>
+                </div>
+            </div>
+            <div class="result">
+                <div class="result-text result-text_margin">Компьютер загадал число</div>
+                <div class="result-number result-number_margin">2 4 8 0</div>
+            </div>
+            <div class="modal-footer">
+                <p class="footer-text footer-text_margin">Теперь ты можешь</p>
+                <div class="footer-links">
+                    <div class="footer-links__left">
+                        <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
+                        <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
+                        <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
+                    </div>
+                    <div class="footer-links__right">
+                        <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
+                        <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
+                        <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="modal-window-text modal-window-win modal-window-win_money" id="modal-window">
+        <div class="win-modal">
+            <div class="close-modal"></div>
+            <div class="quote">
+                <div class="quote-texts quote-texts_money">
+                    <p class="quote-text">О! Кто–то тут выиграл деньги.</p>
+                    <p class="quote-text">Поздравляю.</p>
+                </div>
+                <div class="quote-head">
+                    <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
+                </div>
+            </div>
+            <div class="result">
+                <div class="result-text result-text_margin">Компьютер загадал число</div>
+                <div class="result-number result-number_margin">2 4 8 0</div>
+            </div>
+            <div class="money-text footer-text_margin">Чтобы получить деньги, заполни форму</div>
+            <div class="money-footer">
+                <div class="secret-block">
+                    <p class="secret-text">Секретный код</p>
+                    <p class="secret-code">XeWn42bc</p>
+                </div>
+                <div class="money-form">
+                    <label class="form-text form-text_margin" for="secretCode">Секретный код</label>
+                    <input class="form-input form-input_maring" type="text">
+                    <label class="form-text form-text_margin" for="secretCode">Имя</label>
+                    <input class="form-input form-input_maring" type="text">
+                    <label class="form-text form-text_margin" for="secretCode">Телефон</label>
+                    <input class="form-input" type="text">
+                    <button class="form-btn form-btn_margin">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="overlay" id="overlay"></div>
+    <div class="modal-window-text modal-window-win" id="modal-window">
+        <div class="win-modal">
+            <div class="close-modal"></div>
+            <div class="quote">
+                <div class="quote-texts">
+                    <p class="quote-text">Ого! Даже я с такого хода не отгадывал!</p>
+                    <p class="quote-text">Поздравляю.</p>
+                </div>
+                <div class="quote-head">
+                    <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
+                </div>
+            </div>
+            <div class="result">
+                <div class="result-text result-text_margin">Компьютер загадал число</div>
+                <div class="result-number result-number_margin">2 4 8 0</div>
+            </div>
+            <div class="modal-footer">
+                <p class="footer-text footer-text_margin">Теперь ты можешь</p>
+                <div class="footer-links">
+                    <div class="footer-links__left">
+                        <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
+                        <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
+                        <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
+                    </div>
+                    <div class="footer-links__right">
+                        <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
+                        <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
+                        <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <div class="container">
 
         <header class="header-style">
@@ -73,10 +172,10 @@
                 </div>
                 <div class="inputs-main">
                     <div class="inputs-all">
-                        <input class="input-numb" placeholder="0" maxlength="1" id="input1" data-change="1">
-                        <input class="input-numb" placeholder="0" maxlength="1" id="input2" data-change="2">
-                        <input class="input-numb" placeholder="0" maxlength="1" id="input3" data-change="3">
-                        <input class="input-numb" placeholder="0" maxlength="1" id="input4" data-change="4">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input1">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input2">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input3">
+                        <input class="input-numb" placeholder="0" maxlength="1" id="input4">
                     </div>
                     <div class="button-play button-play_margin">
                         <button class="button-check">Проверить</button>

@@ -8,6 +8,7 @@ class mainGame {
     constructor(firstStart = true, firstCheck = 1) {
         this.firstStart = firstStart;
         this.firstCheck = firstCheck;
+        document.querySelector('.inputs-all').addEventListener("change", (evt) => { this.checkChange(evt.target.dataset.change) });
     }
 
     clickButton() {
@@ -47,17 +48,17 @@ class mainGame {
 
         userTryArr.forEach((num, i) => {
             if (+num === compNumbArr[i]) {
-                bulls++
+                bulls++;
             } else if (compNumbArr.indexOf(+num) >= 0) {
-                cows++
+                cows++;
             }
-        })
+        });
 
         if (bulls == 4) {
-            this.userWin();
+            this.userWin(compNumbArr, icount);
             firstStart = true;
         } else if (icount == 10) {
-            this.userLost();
+            this.userLost(compNumbArr);
             firstStart = true;
         }
         let bullscows = [bulls, cows];
@@ -71,37 +72,142 @@ class mainGame {
             let dynamicBlock = document.getElementById('instruction');
             dynamicBlock.classList.add('invisible__block');
         }
+        //вывод загаданного числа в консоль
         console.log(pcNumbArr);
         let bcArr = this.checkUserTry(userArr, pcNumbArr);
 
         this.render(bcArr, userArr);
-        document.querySelector('.start-new-game__link').onclick = this.reStartGame;
+        document.querySelector('.start-new-game__text').onclick = this.reStartGame;
     }
 
-    userWin() {
+    userWin(numbArr, count) {
         console.log('you win');
         let modalWindowClass = "modal-window-win";
-        let modalText = '<h1>you win</h1><p class="restart-game">Попробуй ещё раз</p>';
+        let modalText;
+        if (count <= 4) {
+            modalText = `<div class="win-modal">
+            <div class="close-modal"></div>
+            <div class="quote">
+                <div class="quote-texts quote-texts_money">
+                    <p class="quote-text">О! Кто–то тут выиграл деньги.</p>
+                    <p class="quote-text">Поздравляю.</p>
+                </div>
+                <div class="quote-head">
+                    <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
+                </div>
+            </div>
+            <div class="result">
+                <div class="result-text result-text_margin">Компьютер загадал число</div>
+                <div class="result-number result-number_margin">${numbArr[0]}&nbsp;${numbArr[1]}&nbsp;${numbArr[2]}&nbsp;${numbArr[3]}</div>
+            </div>
+            <div class="money-text footer-text_margin">Чтобы получить деньги, заполни форму</div>
+            <div class="money-footer">
+                <div class="secret-block">
+                    <p class="secret-text">Секретный код</p>
+                    <p class="secret-code">XeWn42bc</p>
+                </div>
+                <div class="money-form">
+                    <label class="form-text form-text_margin" for="secretCode">Секретный код</label>
+                    <input class="form-input form-input_maring" type="text">
+                    <label class="form-text form-text_margin" for="secretCode">Имя</label>
+                    <input class="form-input form-input_maring" type="text">
+                    <label class="form-text form-text_margin" for="secretCode">Телефон</label>
+                    <input class="form-input" type="text">
+                    <button class="form-btn form-btn_margin">Отправить</button>
+                </div>
+            </div>
+        </div>`;
+        } else {
+            modalText = `<div class="win-modal">
+        <div class="close-modal"></div>
+        <div class="quote">
+            <div class="quote-texts">
+                <p class="quote-text">Ого! Даже я с такого хода не отгадывал!</p>
+                <p class="quote-text">Поздравляю.</p>
+            </div>
+            <div class="quote-head">
+                <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
+            </div>
+        </div>
+        <div class="result">
+            <div class="result-text result-text_margin">Компьютер загадал число</div>
+            <div class="result-number result-number_margin">${numbArr[0]}&nbsp;${numbArr[1]}&nbsp;${numbArr[2]}&nbsp;${numbArr[3]}</div>
+        </div>
+        <div class="modal-footer">
+            <p class="footer-text footer-text_margin">Теперь ты можешь</p>
+            <div class="footer-links">
+                <div class="footer-links__left">
+                    <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
+                    <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
+                    <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
+                </div>
+                <div class="footer-links__right">
+                    <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
+                    <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
+                </div>
+            </div>
+        </div>
+    </div>`;
+        }
 
-        this.modalWindow(modalWindowClass, modalText);
+        this.modalWindow(modalWindowClass, modalText, count);
     }
 
-    userLost() {
+    userLost(numbArr) {
         let modalWindowClass = "modal-window-lost";
-        let modalText = '<h1>you lost</h1><p class="restart-game">Попробуй ещё раз</p>';
+        let modalText = `<div class="win-modal">
+        <div class="close-modal close-modal_lost"></div>
+        <div class="quote quote_lost">
+            <div class="quote-head">
+                <img src="img/site/wolf.png" alt="einstein" width="101" height="167">
+            </div>
+            <div class="quote-texts_lost">
+                <p class="quote-text">Ты, это...</p>
+                <p class="quote-text">Не растраивайся, если чё</p>
+            </div>
+        </div>
+        <div class="result">
+            <div class="result-text result-text_margin">Компьютер загадал число</div>
+            <div class="result-number result-number_margin">${numbArr[0]}&nbsp;${numbArr[1]}&nbsp;${numbArr[2]}&nbsp;${numbArr[3]}</div>
+        </div>
+        <div class="modal-footer">
+            <p class="footer-text footer-text_margin">Теперь ты можешь</p>
+            <div class="footer-links">
+                <div class="footer-links__left">
+                    <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
+                    <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
+                    <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
+                </div>
+                <div class="footer-links__right">
+                    <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
+                    <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
+                </div>
+            </div>
+        </div>
+    </div>`;
 
         this.modalWindow(modalWindowClass, modalText);
     }
 
-    modalWindow(modalWindowType, modalStr) {
+    modalWindow(modalWindowType, modalStr, count) {
         document.getElementById('overlay').classList.remove('invisible__block');
         document.getElementById('modal-window').classList.add(modalWindowType);
+        if (count <= 4) {
+            document.getElementById('modal-window').classList.add('modal-window-win_money');
+        }
         document.getElementById('modal-window').classList.remove('invisible__block');
         document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", modalStr);
-        document.querySelector('.restart-game').onclick = this.reStartGame;
+        document.getElementById('restartGame').onclick = this.reStartGame;
+
+        // В модальном окне уже срабатывает этот клик. Хотя он должен появляться только после нажатия "Закрыть и пойти домой", ну и крестика в правмо углу.
+        // document.getElementById('closeGame').onclick = document.getElementById('ovelay').classList.add('invisible__block');
     }
 
     reStartGame() {
+        console.log('reStartGame');
+
         firstStart = true;
         firstCheck = 1;
         htmlStr = '';
@@ -111,7 +217,7 @@ class mainGame {
         document.getElementById('overlay').classList.add('invisible__block');
         document.getElementById('modal-window').classList.add('invisible__block');
         document.getElementById('instruction').classList.remove('invisible__block');
-
+        document.querySelector('.start-new-game__text').classList.add('invisible__block');
         document.getElementById('input1').placeholder = '0';
         document.getElementById('input2').placeholder = '0';
         document.getElementById('input3').placeholder = '0';
@@ -122,13 +228,13 @@ class mainGame {
             blocks[index].classList.add('invisible__block');
         })
 
-        document.querySelector('.modal-window').innerHTML = "<div></div>";
-        document.querySelector('.start-new-game__link').classList.add('invisible__block');
+        document.getElementById('modal-window').innerHTML = "<div></div>";
+
 
     }
 
     render(userTryDesc, userNumberArr) {
-        let str = `<p class="result-check">${icount}.&nbsp;|&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}</span>&nbsp;<span class="number__${userNumberArr[1]}">${userNumberArr[1]}</span>&nbsp;<span class="number__${userNumberArr[2]}">${userNumberArr[2]}</span>&nbsp;<span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;|&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
+        let str = `<p class="result-check">${icount}.&nbsp;&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}</span><span class="number__${userNumberArr[1]}">${userNumberArr[1]}</span><span class="number__${userNumberArr[2]}">${userNumberArr[2]}</span><span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
 
         console.log(userNumberArr);
         document.getElementById('input1').value = '';
@@ -146,6 +252,7 @@ class mainGame {
 
         if (icount == 4) {
             document.querySelector('.start-new-game__link').classList.remove('invisible__block');
+            document.querySelector('.start-new-game__text').classList.remove('invisible__block');
         }
         if (icount > 1) {
             userNumberArr.forEach((num, i) => {
@@ -178,11 +285,188 @@ class mainGame {
                 // }
             });
         }
+        document.querySelector('.start-new-game__text').onclick = this.reStartGame;
+
+    }
+
+    checkChange(e) {
+        let inp1 = document.getElementById('input1');
+        let inp2 = document.getElementById('input2');
+        let inp3 = document.getElementById('input3');
+        let inp4 = document.getElementById('input4');
+
+        // inp1.classList.remove('input-numb_error');
+        // inp2.classList.remove('input-numb_error');
+        // inp3.classList.remove('input-numb_error');
+        // inp4.classList.remove('input-numb_error');
+
+        // console.log(e);
+        let doubleNumb = false;
+        let countDouble = 0;
+
+        if (e == 1 && inp1.value > 0) {
+            if (inp1.value == inp2.value) {
+                inp2.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`1. -1-  ${inp1.value} | -2- ${inp2.value} ---${doubleNumb}--- --${countDouble}--`);
+            }
+            if (inp1.value == inp3.value) {
+                inp3.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`2. -1-  ${inp1.value} | -3- ${inp3.value} ---${doubleNumb}--- --${countDouble}--`);
+            }
+            if (inp1.value == inp4.value) {
+                inp4.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`3. -1-  ${inp1.value} | -4- ${inp4.value} ---${doubleNumb}--- --${countDouble}--`);
+            }
+            doubleNumb ? inp1.classList.add('input-numb_error') : inp1.classList.remove('input-numb_error');
+
+            if (doubleNumb) {
+                countDouble++
+            } else {
+
+                if (countDouble > 0) {
+                    countDouble--;
+                }
+            };
+
+            console.log(`4. Просто i ---${doubleNumb}--- --${countDouble}--`);
+            console.log(`--------------${countDouble}----------------`);
+
+        } else if (e = 1 && inp1.value == 0) {
+
+            inp1.classList.add('input-numb_error');
+            doubleNumb = true;
+            countDouble++;
+        };
+
+        if (e == 2 && inp2.value >= 0) {
+            if (inp2.value == inp1.value) {
+                inp1.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`5. -2-  ${inp2.value} | -1- ${inp1.value} ---${doubleNumb}`);
+
+            }
+            if (inp2.value == inp3.value) {
+                inp3.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`6. -2-  ${inp2.value} | -3- ${inp3.value} ---${doubleNumb}`);
+            }
+            if (inp2.value == inp4.value) {
+                inp4.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`7. -2-  ${inp2.value} | -4- ${inp4.value} ---${doubleNumb}`);
+            }
+
+            doubleNumb ? inp2.classList.add('input-numb_error') : inp2.classList.remove('input-numb_error');
+            if (doubleNumb) {
+                countDouble++
+            } else {
+
+                if (countDouble > 0) {
+                    countDouble--;
+                }
+            };
+
+            console.log(`8. Просто i ---${doubleNumb}`);
+            console.log(`--------------${countDouble}----------------`);
+
+        };
+
+        if (e == 3 && inp3.value >= 0) {
+            if (inp3.value == inp1.value) {
+                inp1.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`9. -3-  ${inp3.value} | -1- ${inp1.value} ---${doubleNumb}`);
+
+            }
+            if (inp3.value == inp2.value) {
+                inp2.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`10. -3-  ${inp3.value} | -2- ${inp2.value} ---${doubleNumb}`);
+            }
+            if (inp3.value == inp4.value) {
+                inp4.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`11. -3-  ${inp3.value} | -4- ${inp4.value} ---${doubleNumb}`);
+            }
+
+            doubleNumb ? inp3.classList.add('input-numb_error') : inp3.classList.remove('input-numb_error');
+            if (doubleNumb) {
+                countDouble++
+            } else {
+
+                if (countDouble > 0) {
+                    countDouble--;
+                }
+            };
+
+            console.log(`12. Просто i ---${doubleNumb}`);
+            console.log(`--------------${countDouble}----------------`);
+        };
+
+        if (e == 4 && inp4.value >= 0) {
+            if (inp4.value == inp1.value) {
+                inp1.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`13. -4-  ${inp4.value} | -1- ${inp1.value} ---${doubleNumb}`);
+
+            }
+            if (inp4.value == inp2.value) {
+                inp2.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`14. -4-  ${inp4.value} | -2- ${inp2.value} ---${doubleNumb}`);
+            }
+            if (inp4.value == inp3.value) {
+                inp3.classList.add('input-numb_error');
+                doubleNumb = true;
+                countDouble++;
+                console.log(`15. -4-  ${inp4.value} | -3- ${inp3.value} ---${doubleNumb}`);
+            }
+
+            doubleNumb ? inp4.classList.add('input-numb_error') : inp4.classList.remove('input-numb_error');
+            if (doubleNumb) {
+                countDouble++
+            } else {
+
+                if (countDouble > 0) {
+                    countDouble--;
+                }
+            };
+
+            console.log(`16. Просто i ---${doubleNumb}`);
+            console.log(`--------------${countDouble}----------------`);
+        };
+
+        console.log(`17. Количество двойных ${countDouble}`);
+        if (countDouble == 0) {
+            inp1.classList.remove('input-numb_error');
+            inp2.classList.remove('input-numb_error');
+            inp3.classList.remove('input-numb_error');
+            inp4.classList.remove('input-numb_error');
+        };
+
     }
 
     stopGame() {
 
     }
+}
+
+class facts {
+
 }
 
 let startGame = new mainGame();
