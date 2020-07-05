@@ -234,7 +234,7 @@ class mainGame {
     }
 
     render(userTryDesc, userNumberArr) {
-        let str = `<p class="result-check">${icount}.&nbsp;&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}</span><span class="number__${userNumberArr[1]}">${userNumberArr[1]}</span><span class="number__${userNumberArr[2]}">${userNumberArr[2]}</span><span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
+        let str = `<p class="result-check">${icount}.&nbsp;&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[1]}">${userNumberArr[1]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[2]}">${userNumberArr[2]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
 
         console.log(userNumberArr);
         document.getElementById('input1').value = '';
@@ -248,11 +248,12 @@ class mainGame {
         document.getElementById('input4').placeholder = userNumberArr[3];
 
         icount++;
-        document.querySelector('.dynamic-text').insertAdjacentHTML("beforeend", str);
+        document.getElementById('dynamic-text').insertAdjacentHTML("beforeend", str);
 
         if (icount == 4) {
             document.querySelector('.start-new-game__link').classList.remove('invisible__block');
             document.querySelector('.start-new-game__text').classList.remove('invisible__block');
+            document.getElementById('dynamic-text').classList.add('dynamic-text');
         }
         if (icount > 1) {
             userNumberArr.forEach((num, i) => {
@@ -295,169 +296,129 @@ class mainGame {
         let inp3 = document.getElementById('input3');
         let inp4 = document.getElementById('input4');
 
-        // inp1.classList.remove('input-numb_error');
-        // inp2.classList.remove('input-numb_error');
-        // inp3.classList.remove('input-numb_error');
-        // inp4.classList.remove('input-numb_error');
+        let varAB, varAC, varAD, varBC, varBD, varCD = false;
 
-        // console.log(e);
-        let doubleNumb = false;
-        let countDouble = 0;
+        let mainBtn = document.getElementById('mainBtn');
+        let disableBtn = false;
 
-        if (e == 1 && inp1.value > 0) {
-            if (inp1.value == inp2.value) {
-                inp2.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`1. -1-  ${inp1.value} | -2- ${inp2.value} ---${doubleNumb}--- --${countDouble}--`);
-            }
-            if (inp1.value == inp3.value) {
-                inp3.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`2. -1-  ${inp1.value} | -3- ${inp3.value} ---${doubleNumb}--- --${countDouble}--`);
-            }
-            if (inp1.value == inp4.value) {
-                inp4.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`3. -1-  ${inp1.value} | -4- ${inp4.value} ---${doubleNumb}--- --${countDouble}--`);
-            }
-            doubleNumb ? inp1.classList.add('input-numb_error') : inp1.classList.remove('input-numb_error');
+        if ((inp1.value == inp2.value) && (inp1.value > 0 && inp2.value > 0)) { varAB = true; }
+        if ((inp1.value == inp3.value) && (inp1.value > 0 && inp3.value > 0)) { varAC = true; }
+        if ((inp1.value == inp4.value) && (inp1.value > 0 && inp4.value > 0)) { varAD = true; }
+        if ((inp2.value == inp3.value) && (inp2.value >= 0 && inp3.value >= 0)) { varBC = true; }
+        if ((inp2.value == inp4.value) && (inp2.value >= 0 && inp4.value >= 0)) { varBD = true; }
+        if ((inp3.value == inp4.value) && (inp3.value >= 0 && inp4.value >= 0)) { varCD = true; }
 
-            if (doubleNumb) {
-                countDouble++
-            } else {
+        console.log(`varAB---${varAB}`);
+        console.log(`varAC---${varAC}`);
+        console.log(`varAD---${varAD}`);
+        console.log(`varBC---${varBC}`);
+        console.log(`varBD---${varBD}`);
+        console.log(`varCD---${varCD}`);
+        console.log(`-----------------`);
 
-                if (countDouble > 0) {
-                    countDouble--;
-                }
-            };
-
-            console.log(`4. Просто i ---${doubleNumb}--- --${countDouble}--`);
-            console.log(`--------------${countDouble}----------------`);
-
-        } else if (e = 1 && inp1.value == 0) {
-
-            inp1.classList.add('input-numb_error');
-            doubleNumb = true;
-            countDouble++;
-        };
-
-        if (e == 2 && inp2.value >= 0) {
-            if (inp2.value == inp1.value) {
-                inp1.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`5. -2-  ${inp2.value} | -1- ${inp1.value} ---${doubleNumb}`);
-
-            }
-            if (inp2.value == inp3.value) {
-                inp3.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`6. -2-  ${inp2.value} | -3- ${inp3.value} ---${doubleNumb}`);
-            }
-            if (inp2.value == inp4.value) {
-                inp4.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`7. -2-  ${inp2.value} | -4- ${inp4.value} ---${doubleNumb}`);
-            }
-
-            doubleNumb ? inp2.classList.add('input-numb_error') : inp2.classList.remove('input-numb_error');
-            if (doubleNumb) {
-                countDouble++
-            } else {
-
-                if (countDouble > 0) {
-                    countDouble--;
-                }
-            };
-
-            console.log(`8. Просто i ---${doubleNumb}`);
-            console.log(`--------------${countDouble}----------------`);
-
-        };
-
-        if (e == 3 && inp3.value >= 0) {
-            if (inp3.value == inp1.value) {
-                inp1.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`9. -3-  ${inp3.value} | -1- ${inp1.value} ---${doubleNumb}`);
-
-            }
-            if (inp3.value == inp2.value) {
-                inp2.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`10. -3-  ${inp3.value} | -2- ${inp2.value} ---${doubleNumb}`);
-            }
-            if (inp3.value == inp4.value) {
-                inp4.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`11. -3-  ${inp3.value} | -4- ${inp4.value} ---${doubleNumb}`);
-            }
-
-            doubleNumb ? inp3.classList.add('input-numb_error') : inp3.classList.remove('input-numb_error');
-            if (doubleNumb) {
-                countDouble++
-            } else {
-
-                if (countDouble > 0) {
-                    countDouble--;
-                }
-            };
-
-            console.log(`12. Просто i ---${doubleNumb}`);
-            console.log(`--------------${countDouble}----------------`);
-        };
-
-        if (e == 4 && inp4.value >= 0) {
-            if (inp4.value == inp1.value) {
-                inp1.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`13. -4-  ${inp4.value} | -1- ${inp1.value} ---${doubleNumb}`);
-
-            }
-            if (inp4.value == inp2.value) {
-                inp2.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`14. -4-  ${inp4.value} | -2- ${inp2.value} ---${doubleNumb}`);
-            }
-            if (inp4.value == inp3.value) {
-                inp3.classList.add('input-numb_error');
-                doubleNumb = true;
-                countDouble++;
-                console.log(`15. -4-  ${inp4.value} | -3- ${inp3.value} ---${doubleNumb}`);
-            }
-
-            doubleNumb ? inp4.classList.add('input-numb_error') : inp4.classList.remove('input-numb_error');
-            if (doubleNumb) {
-                countDouble++
-            } else {
-
-                if (countDouble > 0) {
-                    countDouble--;
-                }
-            };
-
-            console.log(`16. Просто i ---${doubleNumb}`);
-            console.log(`--------------${countDouble}----------------`);
-        };
-
-        console.log(`17. Количество двойных ${countDouble}`);
-        if (countDouble == 0) {
+        if (!varAB) {
             inp1.classList.remove('input-numb_error');
             inp2.classList.remove('input-numb_error');
+        }
+
+        if (!varAC) {
+            inp1.classList.remove('input-numb_error');
+            inp3.classList.remove('input-numb_error');
+        }
+
+        if (!varAD) {
+            inp1.classList.remove('input-numb_error');
+            inp4.classList.remove('input-numb_error');
+        }
+
+        if (!varBC) {
+            inp2.classList.remove('input-numb_error');
+            inp3.classList.remove('input-numb_error');
+        }
+
+        if (!varBD) {
+            inp2.classList.remove('input-numb_error');
+            inp4.classList.remove('input-numb_error');
+        }
+
+        if (!varCD) {
             inp3.classList.remove('input-numb_error');
             inp4.classList.remove('input-numb_error');
+        }
+
+        if (varAB) {
+            inp1.classList.add('input-numb_error');
+            inp2.classList.add('input-numb_error');
+            disableBtn = true;
+        }
+
+        if (varAC) {
+            inp1.classList.add('input-numb_error');
+            inp3.classList.add('input-numb_error');
+            disableBtn = true;
+        }
+
+        if (varAD) {
+            inp1.classList.add('input-numb_error');
+            inp4.classList.add('input-numb_error');
+            disableBtn = true;
+        }
+
+        if (varBC) {
+            inp2.classList.add('input-numb_error');
+            inp3.classList.add('input-numb_error');
+            disableBtn = true;
+        }
+
+        if (varBD) {
+            inp2.classList.add('input-numb_error');
+            inp4.classList.add('input-numb_error');
+            disableBtn = true;
+        }
+
+        if (varCD) {
+            inp3.classList.add('input-numb_error');
+            inp4.classList.add('input-numb_error');
+            disableBtn = true;
+        }
+
+        if (inp1.value == 0) {
+            inp1.classList.add('input-numb_error');
+            disableBtn = true;
         };
 
+        //Проверка на ввод только цифр
+        let mask = /\d/;
+
+        if (inp1.value.search(mask) == -1) {
+            inp1.classList.add('input-numb_error');
+            disableBtn = true;
+        };
+        if (inp2.value.search(mask) == -1) {
+            inp2.classList.add('input-numb_error');
+            disableBtn = true;
+        };
+        if (inp3.value.search(mask) == -1) {
+            inp3.classList.add('input-numb_error');
+            disableBtn = true;
+        };
+        if (inp4.value.search(mask) == -1) {
+            inp4.classList.add('input-numb_error');
+            disableBtn = true;
+        };
+
+        if (inp1.value == "" && inp2.value == "" && inp3.value == "" && inp4.value == "") { disableBtn = true };
+
+        if (disableBtn) {
+            mainBtn.disabled = true;
+            mainBtn.classList.add('button-check_disabled');
+            mainBtn.classList.remove('button-check');
+        } else {
+            mainBtn.disabled = false;
+            mainBtn.classList.remove('button-check_disabled');
+            mainBtn.classList.add('button-check');
+            document.querySelector('.button-check').onclick = this.clickButton;
+        }
     }
 
     stopGame() {
@@ -471,4 +432,4 @@ class facts {
 
 let startGame = new mainGame();
 // startGame.compNumb();
-document.querySelector('.button-check').onclick = startGame.clickButton;
+// document.querySelector('.button-check').onclick = startGame.clickButton;

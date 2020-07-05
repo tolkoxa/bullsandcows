@@ -61,7 +61,7 @@
             <section class="inputs">
                 <div class="your-choice">
                     <div class="border-words">
-                        <div class="dynamic-text">
+                        <div id="dynamic-text">
                             <div id="instruction">
                                 <p class="instruction">Компьютер уже загадал число.</p>
                                 <p class="instruction">Введи свой вариант в эти поля.</p>
@@ -79,7 +79,7 @@
                         <input class="input-numb" placeholder="0" maxlength="1" id="input4" data-change="4">
                     </div>
                     <div class="button-play button-play_margin">
-                        <button class="button-check">Проверить</button>
+                        <button class="button-check" id="mainBtn">Проверить</button>
                     </div>
                     <div class="start-new-game__link invisible__block">
                         <span class="start-new-game__text start-new-game_margin invisible__block">Начать с начала</span>
@@ -115,33 +115,31 @@
                     </p>
                     <p class="game-name__text_black game-name__footer">Коровы</p>
                 </div>
-                <div class="copyright">&copy; 2020</div>
+                <div class="copyright">&copy; 2020, Андрей Халимоненко</div>
+                <div class="text__footer">
+                    <a class="text__link" href="http://tolkoxa.ru">http://tolkoxa.ru</a>.
+                </div>
             </div>
-            <div class="footer-grid">
-                <p class="text__footer">Игра &laquo;Быки и коровы&raquo; разработана в <a href="http://plan-b.studio" class="text__link">plan b studio</a>.<br> Кроме браузерных игр мы разрабатываем приложения и сайты.<br>Сайт может быть на <a class="text__link" href="https://ru.wordpress.org">wordpress</a>                    или с использованием конструкторов: <a href="http://bazium.com" class="text__link">Базиум</a>,
+            <div class="footer-grid footer-quote">
+                <p class="text__footer">Надеюсь, тебе понравилась эта игра. Я хотел сделать её лёгкой и интересной. Буду рад, если ты посоветуешь её своим друзьям и знакомым.</p>
+                <p class="text__footer">Скоро будут новые игры и интересные приложения, если хочешь быть в курсе новинок, то заполни форму справа: укажи своё имя и любой способ связи.</p>
+                <p class="text__footer">Сам не спамю, и твои данные никому не передам. Обещаю.</p>
+                <!-- <p class="text__footer">Игра &laquo;Быки и коровы&raquo; разработана в <a href="http://plan-b.studio" class="text__link">plan b studio</a>.<br> Кроме браузерных игр мы разрабатываем приложения и сайты.<br>Сайт может быть на <a class="text__link" href="https://ru.wordpress.org">wordpress</a>                    или с использованием конструкторов: <a href="http://bazium.com" class="text__link">Базиум</a>,
                     <a href="http://tilda.cc" class="text__link">Тильда</a>,
                     <a href="https://www.bitrix24.ru/" class="text__link">Битрикс 24</a>.</p>
-                <p class="text__footer">И конечно же, мы разрабатываем сайты с &laquo;нуля&raquo; &#151; пишем код от начала и до конца.</p>
+                <p class="text__footer">И конечно же, мы разрабатываем сайты с &laquo;нуля&raquo; &#151; пишем код от начала и до конца.</p> -->
             </div>
             <div class="footer-grid">
                 <div class="footer-main-blocks">
                     <p class="text__footer">Пожелания/предложения</p>
                     <form action="#" method="post">
+                        <input class="footer-input" placeholder="Имя"></input>
                         <textarea class="textarea" placeholder="Сообщение"></textarea>
                         <button class="button-send-2">Отправить</button>
                     </form>
                 </div>
             </div>
         </footer>
-        <section class="plan-b-style">
-            <div class="dev-planb">Разработано в&nbsp;
-                <a href="http://plan-b.studio" style="text-decoration: none;">
-                    <div class="plan-b">
-                        <span class="planb_p">p</span><span class="planb_l">l</span><span class="planb_a">a</span><span class="planb_n">n</span>&nbsp;<span class="planb_b">b</span>
-                    </div>
-                </a>
-            </div>
-        </section>
     </div>
 </body>
 
