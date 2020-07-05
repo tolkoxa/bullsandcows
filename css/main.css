@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -493,7 +494,7 @@ body {
   font-family: "Roboto";
   text-align: center;
   vertical-align: middle;
-  border: 1px solid #cecece;
+  border: 2px solid #cecece;
   background-color: white;
   border-radius: 20px;
   color: #000;
@@ -623,6 +624,19 @@ body {
   .button-check:active {
     outline: none; }
 
+.button-check_disabled {
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  color: #b1b1b1;
+  border: 2px solid #b1b1b1;
+  font-size: 24px;
+  display: inline-block;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #757373;
+  outline: none; }
+
 .facts {
   margin: 0 30px 0 0;
   padding: 0 0 0 0;
@@ -650,7 +664,7 @@ body {
   padding: 40px 12px;
   box-sizing: border-box;
   background-color: #202020;
-  height: 220px;
+  height: 320px;
   display: flex;
   justify-content: space-around;
   align-items: flex-start; }
@@ -661,6 +675,18 @@ body {
   color: #fff; }
   .footer-grid:first-child {
     width: 20%; }
+
+.footer-quote {
+  position: relative; }
+  .footer-quote::before {
+    content: '–';
+    position: absolute;
+    top: -10px;
+    left: -25px;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "Roboto";
+    color: #757373; }
 
 .game-name__footer {
   font-size: 50px;
@@ -674,7 +700,7 @@ body {
   font-size: 15px; }
 
 .text__footer {
-  margin: 0 0 0 0;
+  margin: 0 0 15px 0;
   padding: 0 0 0 0;
   font-family: "Roboto";
   font-size: 16px;
@@ -730,13 +756,13 @@ body {
     cursor: pointer;
     border-radius: 20px; }
 
-.textarea {
+.footer-input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   padding-left: 20px;
   outline: none;
-  height: 85px;
+  height: 45px;
   width: 400px;
   background-color: #a1a1a1;
   color: #f5f5f5;
@@ -746,77 +772,32 @@ body {
   margin: 5px 0 5px 0;
   box-sizing: border-box; }
 
-.plan-b-style {
-  width: 100%;
-  height: 54px;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-  background-color: #202020; }
+.textarea {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 20px;
+  outline: none;
+  height: 100px;
+  width: 400px;
+  background-color: #a1a1a1;
+  color: #f5f5f5;
+  border: 1px solid #a1a1a1;
+  font-size: 20px;
+  line-height: 22px;
+  margin: 5px 0 5px 0;
+  box-sizing: border-box; }
 
-.dev-planb {
-  margin: 0 40px 0 0;
-  padding: 0 0 0 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; }
-
-.plan-b {
-  margin: 0 0 0 0;
-  padding: 0 2px 0 0;
-  background-color: #646464;
-  color: white;
-  width: 84px;
-  height: 40px;
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0.5;
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px; }
-
-.plan-b:hover {
-  opacity: 1;
-  transition: 0.5s; }
-
-.planb_p,
-.planb_l,
-.planb_a,
-.planb_n,
-.planb_b {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-  display: block; }
-
-.planb_p {
-  font-weight: 100; }
-
-.planb_l {
-  font-weight: 300; }
-
-.planb_a {
-  font-weight: 400; }
-
-.planb_n {
-  font-weight: 500; }
-
-.planb_b {
-  font-weight: 700; }
-
-.restart-game:hover {
-  cursor: pointer; }
-
-.number__0,
-.number__1,
-.number__2,
-.number__3,
-.number__4,
-.number__5,
-.number__6,
-.number__7,
-.number__8,
-.number__9 {
-  margin: 0 0 0 0;
-  padding: 0 3px; }
+.dynamic-text {
+  position: relative; }
+  .dynamic-text::before {
+    content: 'Наведи курсор на цифры, будет легче отгадывать';
+    font-size: 14px;
+    width: 99px;
+    top: 0px;
+    left: -170px;
+    color: #000;
+    font-family: "Roboto";
+    font-weight: 400;
+    font-style: italic;
+    position: absolute; }
