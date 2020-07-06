@@ -229,6 +229,7 @@ class mainGame {
         })
 
         document.getElementById('modal-window').innerHTML = "<div></div>";
+        document.getElementById('dynamic-text').classList.remove('dynamic-text');
 
 
     }
@@ -411,14 +412,15 @@ class mainGame {
 
         if (disableBtn) {
             mainBtn.disabled = true;
-            mainBtn.classList.add('button-check_disabled');
-            mainBtn.classList.remove('button-check');
+            // mainBtn.classList.add('button-check_disabled');
+            // mainBtn.classList.remove('button-check');
         } else {
             mainBtn.disabled = false;
-            mainBtn.classList.remove('button-check_disabled');
-            mainBtn.classList.add('button-check');
+            // mainBtn.classList.remove('button-check_disabled');
+            // mainBtn.classList.add('button-check');
             document.querySelector('.button-check').onclick = this.clickButton;
         }
+
     }
 
     stopGame() {

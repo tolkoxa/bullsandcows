@@ -421,7 +421,6 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    // height: 200px;
     background-color: $bgcolor-cow-input;
 }
 
@@ -723,6 +722,18 @@ body {
     }
     &:active {
         outline: none;
+    }
+    &::after {
+        content: "Ошибка ввода";
+        width: 200px;
+        height: 40px;
+        position: absolute;
+        left: -300px;
+        top: -20px;
+        font-family: $font-main;
+        font-size: 15px;
+        color: $text-color_main;
+        z-index: 1000;
     }
 }
 
