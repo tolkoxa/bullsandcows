@@ -751,6 +751,20 @@ body {
     outline: none;
 }
 
+.button-check_disabled {
+    padding: 0.75em 2em;
+    text-align: center;
+    text-decoration: none;
+    color: $bgcolor-second;
+    border: 2px solid $bgcolor-second;
+    font-size: 24px;
+    display: inline-block;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: $text-color_grey;
+    outline: none;
+}
+
 .facts {
     margin: 0 30px 0 0;
     padding: 0 0 0 0;

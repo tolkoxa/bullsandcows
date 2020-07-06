@@ -410,6 +410,8 @@ class mainGame {
 
         if (inp1.value == "" && inp2.value == "" && inp3.value == "" && inp4.value == "") { disableBtn = true };
 
+        if (inp1.value == "" && inp2.value == "" && inp3.value == "" && inp4.value == "") { disableBtn = true };
+
         if (disableBtn) {
             mainBtn.disabled = true;
             // mainBtn.classList.add('button-check_disabled');
