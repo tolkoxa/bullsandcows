@@ -203,6 +203,9 @@ class mainGame {
 
         // В модальном окне уже срабатывает этот клик. Хотя он должен появляться только после нажатия "Закрыть и пойти домой", ну и крестика в правмо углу.
         // document.getElementById('closeGame').onclick = document.getElementById('ovelay').classList.add('invisible__block');
+
+        document.getElementById('closeGame').addEventListener('click', this.closeModal());
+        document.querySelector('.close-modal').addEventListener('click', this.closeModal())
     }
 
     reStartGame() {
@@ -425,9 +428,15 @@ class mainGame {
 
     }
 
-    stopGame() {
-
+    //Простое закрытие окна, без ссылки "попробовать ещё раз"
+    closeModal() {
+        document.getElementById('overlay').classList.add('invisible__block');
+        document.getElementById('modal-window').classList.add('invisible__block');
     }
+
+    // stopGame() {
+
+    // }
 }
 
 class facts {
