@@ -81,7 +81,6 @@ class mainGame {
     }
 
     userWin(numbArr, count) {
-        console.log('you win');
         let modalWindowClass = "modal-window-win";
         let modalText;
         if (count <= 4) {
@@ -196,21 +195,15 @@ class mainGame {
         document.getElementById('modal-window').classList.add(modalWindowType);
         if (count <= 4) {
             document.getElementById('modal-window').classList.add('modal-window-win_money');
+
         }
         document.getElementById('modal-window').classList.remove('invisible__block');
         document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", modalStr);
-        document.getElementById('restartGame').onclick = this.reStartGame;
 
-        // В модальном окне уже срабатывает этот клик. Хотя он должен появляться только после нажатия "Закрыть и пойти домой", ну и крестика в правмо углу.
-        // document.getElementById('closeGame').onclick = document.getElementById('ovelay').classList.add('invisible__block');
-
-        document.getElementById('closeGame').addEventListener('click', this.closeModal());
-        document.querySelector('.close-modal').addEventListener('click', this.closeModal())
+        document.querySelector('.close-modal').addEventListener('click', this.closeModal);
     }
 
     reStartGame() {
-        console.log('reStartGame');
-
         firstStart = true;
         firstCheck = 1;
         htmlStr = '';
@@ -240,7 +233,6 @@ class mainGame {
     render(userTryDesc, userNumberArr) {
         let str = `<p class="result-check">${icount}.&nbsp;&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[1]}">${userNumberArr[1]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[2]}">${userNumberArr[2]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
 
-        console.log(userNumberArr);
         document.getElementById('input1').value = '';
         document.getElementById('input2').value = '';
         document.getElementById('input3').value = '';
@@ -292,6 +284,7 @@ class mainGame {
         }
         document.querySelector('.start-new-game__text').onclick = this.reStartGame;
 
+
     }
 
     checkChange(e) {
@@ -311,14 +304,6 @@ class mainGame {
         if ((inp2.value == inp3.value) && (inp2.value >= 0 && inp3.value >= 0)) { varBC = true; }
         if ((inp2.value == inp4.value) && (inp2.value >= 0 && inp4.value >= 0)) { varBD = true; }
         if ((inp3.value == inp4.value) && (inp3.value >= 0 && inp4.value >= 0)) { varCD = true; }
-
-        console.log(`varAB---${varAB}`);
-        console.log(`varAC---${varAC}`);
-        console.log(`varAD---${varAD}`);
-        console.log(`varBC---${varBC}`);
-        console.log(`varBD---${varBD}`);
-        console.log(`varCD---${varCD}`);
-        console.log(`-----------------`);
 
         if (!varAB) {
             inp1.classList.remove('input-numb_error');
@@ -441,6 +426,26 @@ class mainGame {
 
 class facts {
 
+
+    //Сделать второй массив, с предыдущими фактами.action
+    /*
+    Логика работы.
+    Выпало случайное число, по нему отобразили факт. Это число добавил в проверочный массив.
+    Прежде чем выводит на экран факт, нужно проверить, нет ли его случайного числа в этом проверрочном массиве.
+    Если есть, то искать другое число, чтобы его не было в проверочном массиве.
+
+    Сделать массив из 5–ти записей. Это означает, что в течении 5–ти ходов факты не будут повторяться, а потом уже могут.
+
+    Добавлять в конец.... Либо просто все варианты добавлять в текущий массив, чтобы не повторялись факты.
+    */
+    // getResponse() {
+    //     let response = await fetch('./json/facts.json');
+    //     let content = await response.json();
+
+    //     return content.find(item => item.id = 1);
+    // }
+
+    // getResponse();
 }
 
 let startGame = new mainGame();
