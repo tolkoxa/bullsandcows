@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js" defer></script>
     <script src="https://yastatic.net/es5-shims/0.0.2/es5-shims.min.js" defer></script>
     <script src="https://yastatic.net/share2/share.js" defer></script>
     <title>Игра &laquo;БЫКИ И КОРОВЫ&raquo;</title>
@@ -89,10 +88,10 @@
             <section class="facts">
                 <div class="facts-text">
                     <p class="text__title text__title_indents">Интересные факты</p>
-                    <p class="text__desc">ФАКТ № 27.</p>
-                    <p class="text__desc">Коровы вредят экологии больше, чем автомобили.<br>Их навоз и просто кишечные газы вносят около 18% вклада в парниковый эффект нашей планеты.</p>
+                    <p class="text__desc" id="fact-numb"></p>
+                    <p class="text__desc" id="fact-text"></p>
                     <p class="text__desc">
-                        <a href="#" id="next-fact">Следующий факт</a>
+                        <a class="next-fact_link" id="next-fact">Следующий факт</a>
                     </p>
                 </div>
                 <div class="social-links" id="#share">
@@ -124,10 +123,6 @@
                 <p class="text__footer">Надеюсь, тебе понравилась эта игра. Я хотел сделать её лёгкой и интересной. Буду рад, если ты посоветуешь её своим друзьям и знакомым.</p>
                 <p class="text__footer">Скоро будут новые игры и интересные приложения, если хочешь быть в курсе новинок, то заполни форму справа: укажи своё имя и любой способ связи.</p>
                 <p class="text__footer">Сам не спамю, и твои данные никому не передам. Обещаю.</p>
-                <!-- <p class="text__footer">Игра &laquo;Быки и коровы&raquo; разработана в <a href="http://plan-b.studio" class="text__link">plan b studio</a>.<br> Кроме браузерных игр мы разрабатываем приложения и сайты.<br>Сайт может быть на <a class="text__link" href="https://ru.wordpress.org">wordpress</a>                    или с использованием конструкторов: <a href="http://bazium.com" class="text__link">Базиум</a>,
-                    <a href="http://tilda.cc" class="text__link">Тильда</a>,
-                    <a href="https://www.bitrix24.ru/" class="text__link">Битрикс 24</a>.</p>
-                <p class="text__footer">И конечно же, мы разрабатываем сайты с &laquo;нуля&raquo; &#151; пишем код от начала и до конца.</p> -->
             </div>
             <div class="footer-grid">
                 <div class="footer-main-blocks">
@@ -141,6 +136,7 @@
             </div>
         </footer>
     </div>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

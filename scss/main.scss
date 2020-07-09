@@ -457,6 +457,7 @@ body {
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
+    word-break: break-word;
     &:last-child {
         margin: 0 0 50px 0;
     }
@@ -951,10 +952,20 @@ body {
         width: 99px;
         top: 0px;
         left: -170px;
-        color: $text-color_main;
+        color: $color;
         font-family: $font-main;
         font-weight: 400;
         font-style: italic;
         position: absolute;
+    }
+}
+
+.next-fact_link {
+    color: $text-color_main;
+    text-decoration: underline;
+    &:hover {
+        cursor: pointer;
+        color: $text-color_grey;
+        text-decoration: none;
     }
 }

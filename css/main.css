@@ -397,7 +397,8 @@ body {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  line-height: 22px; }
+  line-height: 22px;
+  word-break: break-word; }
   .text__desc:last-child {
     margin: 0 0 50px 0; }
   .text__desc:first-child {
@@ -822,8 +823,16 @@ body {
     width: 99px;
     top: 0px;
     left: -170px;
-    color: #000;
+    color: #2194E0;
     font-family: "Roboto";
     font-weight: 400;
     font-style: italic;
     position: absolute; }
+
+.next-fact_link {
+  color: #000;
+  text-decoration: underline; }
+  .next-fact_link:hover {
+    cursor: pointer;
+    color: #757373;
+    text-decoration: none; }

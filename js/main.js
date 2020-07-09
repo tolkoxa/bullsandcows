@@ -3,6 +3,34 @@ let firstCheck = 1;
 let htmlStr = '';
 let icount = 1;
 let pcNumbArr = [];
+let testArrFacts = [];
+
+
+async function getJson() {
+    let response = await fetch('./json/facts.json');
+    let content = await response.json();
+    let factNumb = startGame.randomizer(Object.keys(content).length);
+
+    if (factNumb == 0) {
+        factNumb = startGame.randomizer(Object.keys(content).length);
+    } else {
+        while (testArrFacts.indexOf(factNumb) != -1) {
+            factNumb = startGame.randomizer(Object.keys(content).length);
+            if (testArrFacts.length == Object.keys(content).length) {
+                testArrFacts = [];
+            };
+        }
+
+    }
+
+    document.querySelector('#fact-numb').innerHTML = '';
+    document.querySelector('#fact-text').innerHTML = '';
+
+    let factText = content[factNumb];
+    testArrFacts.push(factNumb);
+    startGame.renderFact(factNumb, factText);
+
+};
 
 class mainGame {
     constructor(firstStart = true, firstCheck = 1) {
@@ -227,64 +255,70 @@ class mainGame {
         document.getElementById('modal-window').innerHTML = "<div></div>";
         document.getElementById('dynamic-text').classList.remove('dynamic-text');
 
-
     }
 
     render(userTryDesc, userNumberArr) {
-        let str = `<p class="result-check">${icount}.&nbsp;&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[1]}">${userNumberArr[1]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[2]}">${userNumberArr[2]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
+            let str = `<p class="result-check">${icount}.&nbsp;&nbsp;&nbsp;<span class="number__${userNumberArr[0]}">${userNumberArr[0]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[1]}">${userNumberArr[1]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[2]}">${userNumberArr[2]}&nbsp;&nbsp;</span><span class="number__${userNumberArr[3]}">${userNumberArr[3]}</span>&nbsp;&nbsp;&nbsp;${userTryDesc[0]}Б&nbsp;${userTryDesc[1]}К</p>`;
 
-        document.getElementById('input1').value = '';
-        document.getElementById('input2').value = '';
-        document.getElementById('input3').value = '';
-        document.getElementById('input4').value = '';
+            document.getElementById('input1').value = '';
+            document.getElementById('input2').value = '';
+            document.getElementById('input3').value = '';
+            document.getElementById('input4').value = '';
 
-        document.getElementById('input1').placeholder = userNumberArr[0];
-        document.getElementById('input2').placeholder = userNumberArr[1];
-        document.getElementById('input3').placeholder = userNumberArr[2];
-        document.getElementById('input4').placeholder = userNumberArr[3];
+            document.getElementById('input1').placeholder = userNumberArr[0];
+            document.getElementById('input2').placeholder = userNumberArr[1];
+            document.getElementById('input3').placeholder = userNumberArr[2];
+            document.getElementById('input4').placeholder = userNumberArr[3];
 
-        icount++;
-        document.getElementById('dynamic-text').insertAdjacentHTML("beforeend", str);
+            icount++;
+            document.getElementById('dynamic-text').insertAdjacentHTML("beforeend", str);
 
-        if (icount == 4) {
-            document.querySelector('.start-new-game__link').classList.remove('invisible__block');
-            document.querySelector('.start-new-game__text').classList.remove('invisible__block');
-            document.getElementById('dynamic-text').classList.add('dynamic-text');
-        }
-        if (icount > 1) {
-            userNumberArr.forEach((num, i) => {
-                // for (let j = 0; j < userNumberArr.length; j++) {
+            if (icount == 4) {
+                document.querySelector('.start-new-game__link').classList.remove('invisible__block');
+                document.querySelector('.start-new-game__text').classList.remove('invisible__block');
+                document.getElementById('dynamic-text').classList.add('dynamic-text');
+            }
+            if (icount > 1) {
+                userNumberArr.forEach((num, i) => {
+                    // for (let j = 0; j < userNumberArr.length; j++) {
 
-                let arrNumbOver = document.querySelectorAll(".number__" + userNumberArr[i]);
-                arrNumbOver.forEach((num, index) => {
-                    // for (let a = 0; a < arrNumbOver.length; a++) {
-                    arrNumbOver[index].addEventListener('mouseover', () => {
-                        let numbs = document.querySelectorAll(".number__" + userNumberArr[i]);
-                        numbs.forEach((num, index) => {
-                            numbs[index].style.background = '#b1b1b1';
-                        });
-                        // for (let i = 0; i < numbs.length; i++) {
-                        //     
+                    let arrNumbOver = document.querySelectorAll(".number__" + userNumberArr[i]);
+                    arrNumbOver.forEach((num, index) => {
+                        // for (let a = 0; a < arrNumbOver.length; a++) {
+                        arrNumbOver[index].addEventListener('mouseover', () => {
+                            let numbs = document.querySelectorAll(".number__" + userNumberArr[i]);
+                            numbs.forEach((num, index) => {
+                                numbs[index].style.background = '#b1b1b1';
+                            });
+                            // for (let i = 0; i < numbs.length; i++) {
+                            //     
+                            // }
+                        }, true);
+
+                        arrNumbOver[index].addEventListener('mouseout', () => {
+                            let numbs = document.querySelectorAll(".number__" + userNumberArr[i]);
+                            numbs.forEach((num, index) => {
+                                numbs[index].style.background = 'transparent';
+                            });
+                            // for (let i = 0; i < numbs.length; i++) {
+                            //     numbs[i].style.background = 'transparent';
+                            // }
+                        }, true);
                         // }
-                    }, true);
-
-                    arrNumbOver[index].addEventListener('mouseout', () => {
-                        let numbs = document.querySelectorAll(".number__" + userNumberArr[i]);
-                        numbs.forEach((num, index) => {
-                            numbs[index].style.background = 'transparent';
-                        });
-                        // for (let i = 0; i < numbs.length; i++) {
-                        //     numbs[i].style.background = 'transparent';
-                        // }
-                    }, true);
+                    });
                     // }
                 });
-                // }
-            });
+            }
+            document.querySelector('.start-new-game__text').onclick = this.reStartGame;
+
+
         }
-        document.querySelector('.start-new-game__text').onclick = this.reStartGame;
+        //Вывожу на экран номер факта, его текст и ссылку на следующий случайный факт.
+    renderFact(factNumb, factText) {
+        document.querySelector('#fact-numb').insertAdjacentHTML("beforeend", `ФАКТ № ${factNumb}`);
+        document.querySelector('#fact-text').insertAdjacentHTML("beforeend", factText);
 
-
+        document.getElementById('next-fact').addEventListener('click', getJson);
     }
 
     checkChange(e) {
@@ -422,32 +456,14 @@ class mainGame {
     // stopGame() {
 
     // }
-}
-
-class facts {
-
-
-    //Сделать второй массив, с предыдущими фактами.action
-    /*
-    Логика работы.
-    Выпало случайное число, по нему отобразили факт. Это число добавил в проверочный массив.
-    Прежде чем выводит на экран факт, нужно проверить, нет ли его случайного числа в этом проверрочном массиве.
-    Если есть, то искать другое число, чтобы его не было в проверочном массиве.
-
-    Сделать массив из 5–ти записей. Это означает, что в течении 5–ти ходов факты не будут повторяться, а потом уже могут.
-
-    Добавлять в конец.... Либо просто все варианты добавлять в текущий массив, чтобы не повторялись факты.
-    */
-    // getResponse() {
-    //     let response = await fetch('./json/facts.json');
-    //     let content = await response.json();
-
-    //     return content.find(item => item.id = 1);
-    // }
-
-    // getResponse();
-}
+};
 
 let startGame = new mainGame();
+
+window.onload = function() {
+    getJson();
+};
+
+// getJson();
 // startGame.compNumb();
 // document.querySelector('.button-check').onclick = startGame.clickButton;
