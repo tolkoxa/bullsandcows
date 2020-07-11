@@ -961,11 +961,11 @@ body {
 }
 
 .next-fact_link {
-    color: $text-color_main;
+    color: $color;
     text-decoration: underline;
     &:hover {
         cursor: pointer;
-        color: $text-color_grey;
+        color: $text-color_main;
         text-decoration: none;
     }
 }
