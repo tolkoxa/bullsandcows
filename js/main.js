@@ -181,14 +181,13 @@ class mainGame {
             <p class="footer-text footer-text_margin">Теперь ты можешь</p>
             <div class="footer-links">
                 <div class="footer-links__left">
-                    <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
-                    <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
-                    <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="share">Поделиться с друзьями</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="restart">Попробовать ещё раз</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="devsite">Сайт разработчика</a></p>
                 </div>
                 <div class="footer-links__right">
-                    <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
-                    <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
-                    <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="thx">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="feedback">Написать свои пожелания и предложения</a></p>
                 </div>
             </div>
         </div>
@@ -219,14 +218,13 @@ class mainGame {
             <p class="footer-text footer-text_margin">Теперь ты можешь</p>
             <div class="footer-links">
                 <div class="footer-links__left">
-                    <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
-                    <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
-                    <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="share">Поделиться с друзьями</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="restart">Попробовать ещё раз</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="devsite">Сайт разработчика</a></p>
                 </div>
                 <div class="footer-links__right">
-                    <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
-                    <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
-                    <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
+                    <p class="footer__text" id="thxDev"><a class="footer__text_link" id="thx">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" id="feedback">Написать свои пожелания и предложения</a></p>
                 </div>
             </div>
         </div>
@@ -261,7 +259,7 @@ class mainGame {
 
     //Отправляю в телеграм
     sendTelegram(str) {
-        const ttt = '1053632637:AAFpFofkIShIvCnZF3vXH-fG0wX4u-ekmYQ';
+        const ttt = '1352782865:AAHjN_YICWRfoQc3n_uX_s6p7Op9cIQr6fo';
         // let str = `Имя: ${name_f}, Данные для связи: ${data_f}`;
         let url = `https://api.tlgr.org/bot${ttt}/sendMessage?chat_id=80268845&text=`;
         let xhttp = new XMLHttpRequest();
@@ -275,59 +273,62 @@ class mainGame {
         document.getElementById('modal-window').classList.add(modalWindowType);
         if (count <= 4) {
             document.getElementById('modal-window').classList.add('modal-window-win_money');
+            this.sendUserData(secretWord, count);
 
+            document.getElementById('btn-win').addEventListener('click', () => {
+                let verCode = document.getElementById('ver-code').value;
+                let userName = document.getElementById('user-name').value;
+                let userPhone = document.getElementById('user-phone').value;
+                let currentDate = this.getCurrentDate();
+                let fullStr = `Игра «Быки и коровы». Сообщение от пользователя. Ход: ${count}. Секретный код (система): ${secretWord}. Секретный код (пользователь): ${verCode}. Имя: ${userName}. Телефон: ${userPhone}. ${currentDate}`;
+
+                this.sendTelegram(fullStr);
+                document.querySelector('.modal-window-text').innerHTML = '';
+
+                let strWinMoney = `<div class="win-modal">
+                <div class="close-modal"></div>
+                <div class="quote">
+                    <div class="quote-texts">
+                        <p class="quote-text">Отлично!</p>
+                        <p class="quote-text">Мы скоро позвоним.</p>
+                    </div>
+                    <div class="quote-head">
+                        <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p class="footer-text footer-text_margin">Теперь ты можешь</p>
+                    <div class="footer-links">
+                        <div class="footer-links__left">
+                            <p class="footer__text"><a class="footer__text_link" id="share">Поделиться с друзьями</a></p>
+                            <p class="footer__text"><a class="footer__text_link" id="restart">Попробовать ещё раз</a></p>
+                            <p class="footer__text"><a class="footer__text_link" id="devsite">Сайт разработчика</a></p>
+                        </div>
+                        <div class="footer-links__right">
+                            <p class="footer__text"><a class="footer__text_link" id="thx">Отблагодарить разработчика игры</a></p>
+                            <p class="footer__text"><a class="footer__text_link" id="feedback">Написать свои пожелания и предложения</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+
+                document.querySelector('.modal-window-text').innerHTML = strWinMoney;
+                document.querySelector('.close-modal').addEventListener('click', this.actionModal('close'));
+                document.getElementById('modal-window').classList.remove('modal-window-win_money');
+
+            });
         }
+
         document.getElementById('modal-window').classList.remove('invisible__block');
         document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", modalStr);
 
-        this.sendUserData(secretWord, count);
-
-        document.querySelector('.close-modal').addEventListener('click', this.closeModal);
+        document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
 
 
-        document.getElementById('btn-win').addEventListener('click', () => {
-            let verCode = document.getElementById('ver-code').value;
-            let userName = document.getElementById('user-name').value;
-            let userPhone = document.getElementById('user-phone').value;
-            let currentDate = this.getCurrentDate();
-            let fullStr = `Игра «Быки и коровы». Сообщение от пользователя. Ход: ${count}. Секретный код (система): ${secretWord}. Секретный код (пользователь): ${verCode}. Имя: ${userName}. Телефон: ${userPhone}. ${currentDate}`;
 
-            this.sendTelegram(fullStr);
-            document.querySelector('.modal-window-text').innerHTML = '';
-
-            let strWinMoney = `<div class="win-modal">
-            <div class="close-modal"></div>
-            <div class="quote">
-                <div class="quote-texts">
-                    <p class="quote-text">Отлично!</p>
-                    <p class="quote-text">Мы скоро позвоним.</p>
-                </div>
-                <div class="quote-head">
-                    <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <p class="footer-text footer-text_margin">Теперь ты можешь</p>
-                <div class="footer-links">
-                    <div class="footer-links__left">
-                        <p class="footer__text" id="share"><a class="footer__text_link">Поделиться с друзьями</a></p>
-                        <p class="footer__text" id="restartGame"><a class="footer__text_link">Попробовать ещё раз</a></p>
-                        <p class="footer__text" id="games"><a class="footer__text_link">Посмотреть другие игры</a></p>
-                    </div>
-                    <div class="footer-links__right">
-                        <p class="footer__text" id="thxDev"><a class="footer__text_link">Отблагодарить разработчика игры</a></p>
-                        <p class="footer__text" id="feedback"><a class="footer__text_link">Написать свои пожелания и предложения</a></p>
-                        <p class="footer__text" id="closeGame"><a class="footer__text_link">Закрыть и идти заниматься своими делами</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>`
-
-            document.querySelector('.modal-window-text').innerHTML = strWinMoney;
-            document.querySelector('.close-modal').addEventListener('click', this.closeModal);
-            document.getElementById('modal-window').classList.remove('modal-window-win_money');
-
-        });
+        document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
+        document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
+        document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
 
     }
 
@@ -534,12 +535,6 @@ class mainGame {
 
     }
 
-    //Простое закрытие окна, без ссылки "попробовать ещё раз"
-    closeModal() {
-        document.getElementById('overlay').classList.add('invisible__block');
-        document.getElementById('modal-window').classList.add('invisible__block');
-    }
-
     sendMsgFooter() {
         document.getElementById('userBtnFooter').addEventListener('click', () => {
             let userNameF = document.getElementById('userNameFooter');
@@ -555,6 +550,23 @@ class mainGame {
 
             this.sendTelegram(strMsgF);
         })
+    }
+
+    //Разные действия с модальными окнами
+    actionModal(amType) {
+        document.getElementById('overlay').classList.add('invisible__block');
+        document.getElementById('modal-window').classList.add('invisible__block');
+
+        if (amType == 'devsite') {
+            open('http://tolkoxa.ru', 'site');
+        } else if (amType == 'feedback') {
+            location.assign('#footerText');
+        } else if (amType == 'thx') {
+            location.assign('#sendmoney');
+        } else if (amType == 'restart') {
+            this.reStartGame();
+        }
+
     }
 
 };
