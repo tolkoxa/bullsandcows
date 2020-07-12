@@ -138,7 +138,7 @@ class mainGame {
                 }
                 // console.log(word);
 
-                modalText = `<div class="win-modal">
+                modalText = `<div class="win-modal" id="modaldata">
             <div class="close-modal"></div>
             <div class="quote">
                 <div class="quote-texts quote-texts_money">
@@ -171,7 +171,7 @@ class mainGame {
             </div>
         </div>`;
             } else {
-                modalText = `<div class="win-modal">
+                modalText = `<div class="win-modal id="modaldata">
         <div class="close-modal"></div>
         <div class="quote">
             <div class="quote-texts">
@@ -190,13 +190,13 @@ class mainGame {
             <p class="footer-text footer-text_margin">Теперь ты можешь</p>
             <div class="footer-links">
                 <div class="footer-links__left">
-                    <p class="footer__text"><a class="footer__text_link" id="share">Поделиться с друзьями</a></p>
-                    <p class="footer__text"><a class="footer__text_link" id="restart">Попробовать ещё раз</a></p>
-                    <p class="footer__text"><a class="footer__text_link" id="devsite">Сайт разработчика</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="share">Поделиться с друзьями</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="restart">Попробовать ещё раз</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="devsite">Сайт разработчика</a></p>
                 </div>
                 <div class="footer-links__right">
-                    <p class="footer__text"><a class="footer__text_link" id="thx">Отблагодарить разработчика игры</a></p>
-                    <p class="footer__text"><a class="footer__text_link" id="feedback">Написать свои пожелания и предложения</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="thx">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="feedback">Написать свои пожелания и предложения</a></p>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@ class mainGame {
         //Ситуация, когда пользователь проиграл
     userLost(numbArr) {
         let modalWindowClass = "modal-window-lost";
-        let modalText = `<div class="win-modal">
+        let modalText = `<div class="win-modal" id="modaldata">
         <div class="close-modal close-modal_lost"></div>
         <div class="quote quote_lost">
             <div class="quote-head">
@@ -227,13 +227,13 @@ class mainGame {
             <p class="footer-text footer-text_margin">Теперь ты можешь</p>
             <div class="footer-links">
                 <div class="footer-links__left">
-                    <p class="footer__text"><a class="footer__text_link" id="share">Поделиться с друзьями</a></p>
-                    <p class="footer__text"><a class="footer__text_link" id="restart">Попробовать ещё раз</a></p>
-                    <p class="footer__text"><a class="footer__text_link" id="devsite">Сайт разработчика</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="share">Поделиться с друзьями</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="restart">Попробовать ещё раз</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="devsite">Сайт разработчика</a></p>
                 </div>
                 <div class="footer-links__right">
-                    <p class="footer__text" id="thxDev"><a class="footer__text_link" id="thx">Отблагодарить разработчика игры</a></p>
-                    <p class="footer__text"><a class="footer__text_link" id="feedback">Написать свои пожелания и предложения</a></p>
+                    <p class="footer__text" id="thxDev"><a class="footer__text_link" data-clicktype="thx">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" data-clicktype="feedback">Написать свои пожелания и предложения</a></p>
                 </div>
             </div>
         </div>
@@ -300,8 +300,8 @@ class mainGame {
                 this.sendTelegram(fullStr);
                 document.querySelector('.modal-window-text').innerHTML = '';
 
-                let strWinMoney = `<div class="win-modal">
-                <div class="close-modal"></div>
+                let strWinMoney = `<div class="win-modal" id="modaldata">
+                <div class="close-modal" data-clicktype="close"></div>
                 <div class="quote">
                     <div class="quote-texts">
                         <p class="quote-text">Отлично!</p>
@@ -315,13 +315,13 @@ class mainGame {
                     <p class="footer-text footer-text_margin">Теперь ты можешь</p>
                     <div class="footer-links">
                         <div class="footer-links__left">
-                            <p class="footer__text"><a class="footer__text_link" id="share">Поделиться с друзьями</a></p>
-                            <p class="footer__text"><a class="footer__text_link" id="restart">Попробовать ещё раз</a></p>
-                            <p class="footer__text"><a class="footer__text_link" id="devsite">Сайт разработчика</a></p>
+                            <p class="footer__text"><a class="footer__text_link" data-clicktype="share">Поделиться с друзьями</a></p>
+                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="restart">Попробовать ещё раз</a></p>
+                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="devsite">Сайт разработчика</a></p>
                         </div>
                         <div class="footer-links__right">
-                            <p class="footer__text"><a class="footer__text_link" id="thx">Отблагодарить разработчика игры</a></p>
-                            <p class="footer__text"><a class="footer__text_link" id="feedback">Написать свои пожелания и предложения</a></p>
+                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="thx">Отблагодарить разработчика игры</a></p>
+                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="feedback">Написать свои пожелания и предложения</a></p>
                         </div>
                     </div>
                 </div>
@@ -330,21 +330,41 @@ class mainGame {
                 document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", strWinMoney);
                 document.getElementById('modal-window').classList.remove('modal-window-win_money');
 
-                document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
-                document.getElementById('share').addEventListener('click', () => { this.actionModal('share') });
-                document.getElementById('restart').addEventListener('click', () => { this.actionModal('restart') });
-                document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
-                document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
-                document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
+                document.getElementById('modaldata').addEventListener('click', (evt) => {
+                    let e = evt.target //<button>
+
+                    if (e.name === 'modaldata') {
+                        let clickType = e.dataset.clickType;
+                        console.log(clickType);
+                        this.actionModal(clickType);
+                    }
+                })
+
+                // document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
+                // document.getElementById('share').addEventListener('click', () => { this.actionModal('share') });
+                // document.getElementById('restart').addEventListener('click', () => { this.actionModal('restart') });
+                // document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
+                // document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
+                // document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
 
             });
         } else {
-            document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
-            document.getElementById('share').addEventListener('click', () => { this.actionModal('share') });
-            document.getElementById('restart').addEventListener('click', () => { this.actionModal('restart') });
-            document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
-            document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
-            document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
+            document.getElementById('modaldata').addEventListener('click', (evt) => {
+                let e = evt.target //<button>
+
+                if (e.name === 'modaldata') {
+                    let clickType = e.dataset.clickType;
+                    console.log(clickType);
+                    this.actionModal(clickType);
+                }
+            })
+
+            // document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
+            // document.getElementById('share').addEventListener('click', () => { this.actionModal('share') });
+            // document.getElementById('restart').addEventListener('click', () => { this.actionModal('restart') });
+            // document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
+            // document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
+            // document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
         }
 
 
