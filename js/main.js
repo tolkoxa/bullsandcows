@@ -50,8 +50,17 @@ class mainGame {
             let uNumb3 = document.getElementById('input3');
             let uNumb4 = document.getElementById('input4');
 
-            let userNumbers = [uNumb1.value, uNumb2.value, uNumb3.value, uNumb4.value];
-            startGame.mainPlay(userNumbers);
+
+            if (uNumb1.value == '' && uNumb2.value == '' && uNumb3.value == '' && uNumb4.value == '') {
+                uNumb1.classList.add('input-numb_error');
+                uNumb2.classList.add('input-numb_error');
+                uNumb3.classList.add('input-numb_error');
+                uNumb4.classList.add('input-numb_error');
+            } else {
+
+                let userNumbers = [uNumb1.value, uNumb2.value, uNumb3.value, uNumb4.value];
+                startGame.mainPlay(userNumbers);
+            }
         }
         //Генератор случайных чисел (для числа компьютера, для фактов)
     randomizer(i) {
@@ -271,6 +280,12 @@ class mainGame {
     modalWindow(modalWindowType, modalStr, count, secretWord) {
         document.getElementById('overlay').classList.remove('invisible__block');
         document.getElementById('modal-window').classList.add(modalWindowType);
+        document.getElementById('modal-window').classList.remove('invisible__block');
+        document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", modalStr);
+
+        document.querySelector('.start-new-game__link').classList.remove('invisible__block');
+        document.querySelector('.start-new-game__text').classList.remove('invisible__block');
+
         if (count <= 4) {
             document.getElementById('modal-window').classList.add('modal-window-win_money');
             this.sendUserData(secretWord, count);
@@ -296,7 +311,7 @@ class mainGame {
                         <img src="img/site/einstein.png" alt="einstein" width="150" height="161">
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer modal-footer_margin">
                     <p class="footer-text footer-text_margin">Теперь ты можешь</p>
                     <div class="footer-links">
                         <div class="footer-links__left">
@@ -312,23 +327,26 @@ class mainGame {
                 </div>
             </div>`
 
-                document.querySelector('.modal-window-text').innerHTML = strWinMoney;
-                document.querySelector('.close-modal').addEventListener('click', this.actionModal('close'));
+                document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", strWinMoney);
                 document.getElementById('modal-window').classList.remove('modal-window-win_money');
 
+                document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
+                document.getElementById('share').addEventListener('click', () => { this.actionModal('share') });
+                document.getElementById('restart').addEventListener('click', () => { this.actionModal('restart') });
+                document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
+                document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
+                document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
+
             });
+        } else {
+            document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
+            document.getElementById('share').addEventListener('click', () => { this.actionModal('share') });
+            document.getElementById('restart').addEventListener('click', () => { this.actionModal('restart') });
+            document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
+            document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
+            document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
         }
 
-        document.getElementById('modal-window').classList.remove('invisible__block');
-        document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", modalStr);
-
-        document.querySelector('.close-modal').addEventListener('click', () => { this.actionModal('close') });
-
-
-
-        document.getElementById('devsite').addEventListener('click', () => { this.actionModal('devsite') });
-        document.getElementById('feedback').addEventListener('click', () => { this.actionModal('feedback') });
-        document.getElementById('thx').addEventListener('click', () => { this.actionModal('thx') });
 
     }
 
@@ -521,10 +539,6 @@ class mainGame {
             inp4.classList.add('input-numb_error');
             disableBtn = true;
         };
-
-        if (inp1.value == "" && inp2.value == "" && inp3.value == "" && inp4.value == "") { disableBtn = true };
-
-        if (inp1.value == "" && inp2.value == "" && inp3.value == "" && inp4.value == "") { disableBtn = true };
 
         if (disableBtn) {
             mainBtn.disabled = true;
