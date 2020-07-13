@@ -13,7 +13,8 @@
 </head>
 
 <body>
-    <!-- <div class="modal-window-text modal-window-lost" id="modal-window">
+    <div class="overlay " id="overlay"></div>
+    <div class="modal-window-text modal-window-lost" id="modal-window">
         <div class="win-modal">
             <div class="close-modal close-modal_lost"></div>
             <div class="quote quote_lost">
@@ -45,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- <div class="modal-window-text modal-window-win modal-window-win_money" id="modal-window">
         <div class="win-modal">
             <div class="close-modal"></div>
@@ -243,10 +244,11 @@
         </section>
     </div>
     <script>
-        let closeModal = document.querySelector('.close-modal_lost');
-        closeModal.addEventListener("click", () => {
+        document.getElementById('overlay').addEventListener('click', () => {
             console.log('click');
-        });
+            document.getElementById('overlay').classList.add('invisible__block');
+            document.getElementById('modal-window').classList.add('invisible__block');
+        })
 
 
         // console.log('click');
