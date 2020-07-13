@@ -138,8 +138,8 @@ class mainGame {
                 }
                 // console.log(word);
 
-                modalText = `<div class="win-modal" id="modaldata">
-            <div class="close-modal"></div>
+                modalText = `<div class="win-modal" id="typeclick">
+            <a class="close-modal" name="typeclick" data-type="close"></a>
             <div class="quote">
                 <div class="quote-texts quote-texts_money">
                     <p class="quote-text">О! Кто–то тут выиграл деньги.</p>
@@ -171,8 +171,8 @@ class mainGame {
             </div>
         </div>`;
             } else {
-                modalText = `<div class="win-modal id="modaldata">
-        <div class="close-modal"></div>
+                modalText = `<div class="win-modal" id="typeclick">
+        <a class="close-modal" name="typeclick" data-type="close"></a>
         <div class="quote">
             <div class="quote-texts">
                 <p class="quote-text">Ого! Даже я с такого хода не отгадывал!</p>
@@ -190,13 +190,13 @@ class mainGame {
             <p class="footer-text footer-text_margin">Теперь ты можешь</p>
             <div class="footer-links">
                 <div class="footer-links__left">
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="share">Поделиться с друзьями</a></p>
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="restart">Попробовать ещё раз</a></p>
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="devsite">Сайт разработчика</a></p>
+                    <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="share">Поделиться с друзьями</a></p>
+                    <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="restart">Попробовать ещё раз</a></p>
+                    <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="devsite">Сайт разработчика</a></p>
                 </div>
                 <div class="footer-links__right">
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="thx">Отблагодарить разработчика игры</a></p>
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="feedback">Написать свои пожелания и предложения</a></p>
+                    <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="thx">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="feedback">Написать свои пожелания и предложения</a></p>
                 </div>
             </div>
         </div>
@@ -208,8 +208,8 @@ class mainGame {
         //Ситуация, когда пользователь проиграл
     userLost(numbArr) {
         let modalWindowClass = "modal-window-lost";
-        let modalText = `<div class="win-modal" id="modaldata">
-        <div class="close-modal close-modal_lost"></div>
+        let modalText = `<div class="win-modal" id="typeclick">
+        <a class="close-modal close-modal_lost" name="typeclick" data-type="close"></a>
         <div class="quote quote_lost">
             <div class="quote-head">
                 <img src="img/site/wolf.png" alt="einstein" width="101" height="167">
@@ -227,13 +227,17 @@ class mainGame {
             <p class="footer-text footer-text_margin">Теперь ты можешь</p>
             <div class="footer-links">
                 <div class="footer-links__left">
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="share">Поделиться с друзьями</a></p>
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="restart">Попробовать ещё раз</a></p>
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="devsite">Сайт разработчика</a></p>
+                    <p class="footer__text">
+                    <a class="footer__text_link" name="typeclick" data-type="share">Поделиться с друзьями</a></p>
+                    <p class="footer__text">
+                    <a class="footer__text_link" name="typeclick" data-type="restart">Попробовать ещё раз</a></p>
+                    <p class="footer__text">
+                    <a class="footer__text_link" name="typeclick" data-type="devsite">Сайт разработчика</a></p>
                 </div>
                 <div class="footer-links__right">
-                    <p class="footer__text" id="thxDev"><a class="footer__text_link" data-clicktype="thx">Отблагодарить разработчика игры</a></p>
-                    <p class="footer__text"><a class="footer__text_link" data-clicktype="feedback">Написать свои пожелания и предложения</a></p>
+                    <p class="footer__text" id="thxDev">
+                    <a class="footer__text_link"  name="typeclick" data-type="thx">Отблагодарить разработчика игры</a></p>
+                    <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="feedback">Написать свои пожелания и предложения</a></p>
                 </div>
             </div>
         </div>
@@ -300,8 +304,8 @@ class mainGame {
                 this.sendTelegram(fullStr);
                 document.querySelector('.modal-window-text').innerHTML = '';
 
-                let strWinMoney = `<div class="win-modal" id="modaldata">
-                <div class="close-modal" data-clicktype="close"></div>
+                let strWinMoney = `<div class="win-modal"  id="typeclick">
+                <a class="close-modal" data-type="close" name="typeclick"></a>
                 <div class="quote">
                     <div class="quote-texts">
                         <p class="quote-text">Отлично!</p>
@@ -315,13 +319,13 @@ class mainGame {
                     <p class="footer-text footer-text_margin">Теперь ты можешь</p>
                     <div class="footer-links">
                         <div class="footer-links__left">
-                            <p class="footer__text"><a class="footer__text_link" data-clicktype="share">Поделиться с друзьями</a></p>
-                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="restart">Попробовать ещё раз</a></p>
-                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="devsite">Сайт разработчика</a></p>
+                            <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="share">Поделиться с друзьями</a></p>
+                            <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="restart">Попробовать ещё раз</a></p>
+                            <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="devsite">Сайт разработчика</a></p>
                         </div>
                         <div class="footer-links__right">
-                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="thx">Отблагодарить разработчика игры</a></p>
-                            <p class="footer__text"><a class="footer__text_link" data-clicktype=="feedback">Написать свои пожелания и предложения</a></p>
+                            <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="thx">Отблагодарить разработчика игры</a></p>
+                            <p class="footer__text"><a class="footer__text_link" name="typeclick" data-type="feedback">Написать свои пожелания и предложения</a></p>
                         </div>
                     </div>
                 </div>
@@ -330,12 +334,16 @@ class mainGame {
                 document.querySelector('.modal-window-text').insertAdjacentHTML("afterbegin", strWinMoney);
                 document.getElementById('modal-window').classList.remove('modal-window-win_money');
 
-                document.getElementById('modaldata').addEventListener('click', (evt) => {
-                    let e = evt.target //<button>
+                document.getElementById('typeclick').addEventListener('click', (evt) => {
+                    console.log(evt.target);
+                    console.log('-----');
+                    console.log(`--e-- ${evt.target.name}`);
 
-                    if (e.name === 'modaldata') {
-                        let clickType = e.dataset.clickType;
+                    if (evt.target.name == 'typeclick') {
+                        let clickType = evt.target.dataset.type;
+                        console.log('Больше 5');
                         console.log(clickType);
+                        console.log('------');
                         this.actionModal(clickType);
                     }
                 })
@@ -349,12 +357,16 @@ class mainGame {
 
             });
         } else {
-            document.getElementById('modaldata').addEventListener('click', (evt) => {
-                let e = evt.target //<button>
+            document.getElementById('typeclick').addEventListener('click', (evt) => {
+                console.log(evt.target);
+                console.log('-----');
+                console.log(`--e-- ${evt.target.name}`);
 
-                if (e.name === 'modaldata') {
-                    let clickType = e.dataset.clickType;
+                if (evt.target.name == 'typeclick') {
+                    let clickType = evt.target.dataset.type;
+                    console.log('Больше 5');
                     console.log(clickType);
+                    console.log('------');
                     this.actionModal(clickType);
                 }
             })
@@ -590,6 +602,8 @@ class mainGame {
     actionModal(amType) {
         document.getElementById('overlay').classList.add('invisible__block');
         document.getElementById('modal-window').classList.add('invisible__block');
+
+        console.log(amType);
 
         if (amType == 'devsite') {
             open('http://tolkoxa.ru', 'site');
