@@ -840,3 +840,29 @@ body {
     cursor: pointer;
     color: #000;
     text-decoration: none; }
+
+@media screen and (max-width: 1400px) {
+  .footer-style {
+    display: none; }
+
+  .main-style {
+    display: none; }
+
+  .header-style {
+    display: none; }
+
+  .container {
+    background-color: #fff;
+    width: 80%;
+    height: 100vh;
+    margin: 0 auto; }
+    .container::before {
+      content: 'Сейчас игра доступна только на компьютере или ноутбуке с разрешением не меньше 1400px';
+      display: flex;
+      justify-content: center;
+      margin: 40% auto;
+      width: 300px;
+      font-size: 22px;
+      line-height: 30px;
+      font-family: "Roboto";
+      color: #000; } }
