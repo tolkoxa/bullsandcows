@@ -36,7 +36,7 @@ class mainGame {
         }
         //Инициализация
     _init() {
-            document.querySelector('.inputs-all').addEventListener("change", (evt) => {
+            document.querySelector('.inputs-all').addEventListener("mouseout", (evt) => {
                 this.checkChange(evt.target.dataset.change)
             });
 
